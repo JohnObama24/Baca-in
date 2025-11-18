@@ -26,8 +26,8 @@ class AuthController extends Controller
         $requset->session()->regenerate();
        if(Auth::user()->role == "admin"){
           return redirect()->route('admin-dashboard');
-        }else if(Auth::user()->role == "admin"){
-          return redirect()->route('staf-dashboard');
+        }else if(Auth::user()->role == "librarian"){
+          return redirect()->route('librarian-dashboard');
        }else{
         return redirect()->route('user-dashboard');
       }
@@ -38,19 +38,20 @@ class AuthController extends Controller
       ])->onlyInput('email');
     }
 
-   public function Register (Request $requset){
+    public function Register (Request $requset){
+
       $requset->validate([
-        "name"=>"required|string|max:255",
-        "email"=>"required|string|email|max:255|unique:users",
-        "password"=>"required|string|min:8",
-        "role"=>"required|in:admin,user",
+        "name" => "required|string|max:255",
+        "email" => "required|string|email|max:255|unique:users",
+        "password" => "required|string|min:8|confirmed",
       ]);
+
 
       User::create([
         "name"=>$requset->name,
         "email"=>$requset->email,
         "password"=>bcrypt($requset->password),
-        "role"=>$requset->role,
+        "role"=>"user",
       ]);
 
       return redirect()->route('login')->with('success','Register Success, Please Login');

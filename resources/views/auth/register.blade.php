@@ -21,7 +21,7 @@
         <div
             class="py-6 bg-primary-white flex-[0.5] h-full flex flex-col gap-5 rounded-tl-3xl rounded-tr-3xl">
             <p class="text-left text-md ml-4 mt-4">
-                <a href="#" class="text-tertiary-blue font-semibold">← Back To Login</a>
+                <a href="{{route("login")}}" class="text-tertiary-blue font-semibold">← Back To Login</a>
             </p>
 
             <h1 class="text-6xl font-medium text-center">Sign Up</h1>
@@ -29,8 +29,8 @@
                 Selamat Datang Kembali
             </p>
 
-            <form class="mt-6 space-y-4 w-full px-5">
-
+            <form action="{{route('register.process')}}" class="mt-6 space-y-4 w-full px-5" method="POST">
+              @csrf
                 <div
                     class="bg-white rounded-tl-3xl rounded-br-3xl w-full shadow-md rounded-md px-4 py-3 flex items-center">
                     <span class="text-gray-400 mr-3">
@@ -40,7 +40,7 @@
                                 d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 17.25V6.75m0 0L12 12.75l9.75-6m-19.5 0A2.25 2.25 0 014.5 4.5h15a2.25 2.25 0 012.25 2.25" />
                         </svg>
                     </span>
-                    <input type="text" placeholder="Nama Lengkap" class="w-full bg-transparent focus:outline-none">
+                    <input type="text" placeholder="Nama Lengkap" name="name" class="w-full bg-transparent focus:outline-none">
                 </div>
                 <div
                     class="bg-white rounded-tl-3xl rounded-br-3xl w-full shadow-md rounded-md px-4 py-3 flex items-center">
@@ -51,7 +51,7 @@
                                 d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5A2.25 2.25 0 012.25 17.25V6.75m0 0L12 12.75l9.75-6m-19.5 0A2.25 2.25 0 014.5 4.5h15a2.25 2.25 0 012.25 2.25" />
                         </svg>
                     </span>
-                    <input type="email" placeholder="Email" class="w-full bg-transparent focus:outline-none">
+                    <input type="email" placeholder="Email" name="email" class="w-full bg-transparent focus:outline-none">
                 </div>
 
                 <div class="bg-white rounded-tl-3xl rounded-br-3xl shadow-md rounded-md px-4 py-3 flex items-center">
@@ -62,7 +62,7 @@
                                 d="M16.5 10.5V7.875a4.875 4.875 0 00-9.75 0V10.5m-.75 0h11.25a1.5 1.5 0 011.5 1.5v7.5a1.5 1.5 0 01-1.5 1.5H6a1.5 1.5 0 01-1.5-1.5v-7.5a1.5 1.5 0 011.5-1.5z" />
                         </svg>
                     </span>
-                    <input type="password" placeholder="Password" class="w-full bg-transparent focus:outline-none">
+                    <input type="password" placeholder="Password" name="password" class="w-full bg-transparent focus:outline-none">
                 </div>
 
                 <div class="bg-white rounded-tl-3xl rounded-br-3xl shadow-md rounded-md px-4 py-3 flex items-center">
@@ -73,7 +73,7 @@
                                 d="M16.5 10.5V7.875a4.875 4.875 0 00-9.75 0V10.5m-.75 0h11.25a1.5 1.5 0 011.5 1.5v7.5a1.5 1.5 0 01-1.5 1.5H6a1.5 1.5 0 01-1.5-1.5v-7.5a1.5 1.5 0 011.5-1.5z" />
                         </svg>
                     </span>
-                    <input type="password" placeholder="Confirm Password"
+                    <input type="password" placeholder="Confirm Password" name="confirm_password"
                         class="w-full bg-transparent focus:outline-none">
                 </div>
 

@@ -10,13 +10,8 @@ Route::get('/', function () {
 });
 
 Route::get("/login",[AuthController::class,"ShowLogin"])->name("login");
-Route::post("/login",[AuthController::class,"login"]);
+Route::post("/login",[AuthController::class,"login"])->name("login.process");
 Route::get("/register",[AuthController::class,"showRegister"])->name("register");
-Route::post("/register",[AuthController::class,"Register"]); 
+Route::post("/register",[AuthController::class,"Register"])->name("register.process"); 
+Route::post("/logout",[AuthController::class,"Logout"])->name("logout");
 
-
-Route::middleware('login' )->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    });
-});

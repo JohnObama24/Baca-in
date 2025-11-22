@@ -16,20 +16,20 @@ class AuthController extends Controller
       return view('auth.register');
     }
 
-    public function Login(Request $requset){
-      $credentials = $requset->validate([
+    public function Login(Request $request){
+      $credentials = $request->validate([
         "email"=>"required|string|email",
-        "password"=>"required|string",
+        "password"=>"required|string|confirmed",
       ]);
 
       if (Auth::attempt($credentials)) {
-        $requset->session()->regenerate();
+        $request->session()->regenerate();
        if(Auth::user()->role == "admin"){
           return redirect()->route('admin-dashboard');
         }else if(Auth::user()->role == "librarian"){
           return redirect()->route('librarian-dashboard');
        }else{
-        return redirect()->route('user-dashboard');
+        return redirect()->route('member-home');
       }
       };
 

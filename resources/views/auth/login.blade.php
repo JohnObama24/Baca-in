@@ -72,7 +72,7 @@
                         </svg>
                     </span>
 
-                    <input id="confirmPassword" type="password" placeholder="Confirm Password" name="confirm password"
+                    <input id="confirmPassword" type="password" placeholder="Confirm Password" name="password_confirmation"
                         class="w-full bg-transparent focus:outline-none">
 
                     <button type="button" onclick="togglePassword('confirmPassword','toggleIcon2')"
